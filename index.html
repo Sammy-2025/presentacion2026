@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Presentación 12 Gráficas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+      background: linear-gradient(to bottom right, #001f3f, #ffffff);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .pagina {
+      display: none;
+      animation: aparecer 1s ease-in-out;
+    }
+    .pagina.activa {
+      display: block;
+    }
+    img {
+      width: 40%;
+      margin: 10px;
+      border: 2px solid #fff;
+    }
+    @keyframes aparecer {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background: #001f3f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Página 1 -->
+  <div class="pagina activa">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva1.png" alt="Gráfica 1">
+    <img src="Diapositiva2.png" alt="Gráfica 2">
+  </div>
+
+  <!-- Página 2 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva3.png" alt="Gráfica 3">
+    <img src="Diapositiva4.png" alt="Gráfica 4">
+  </div>
+
+  <!-- Página 3 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva5.png" alt="Gráfica 5">
+    <img src="Diapositiva6.png" alt="Gráfica 6">
+  </div>
+
+  <!-- Página 4 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva7.png" alt="Gráfica 7">
+    <img src="Diapositiva8.png" alt="Gráfica 8">
+  </div>
+
+  <!-- Página 5 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva9.png" alt="Gráfica 9">
+    <img src="Diapositiva10.png" alt="Gráfica 10">
+  </div>
+
+  <!-- Página 6 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva11.png" alt="Gráfica 11">
+    <img src="Diapositiva12.png" alt="Gráfica 12">
+  </div>
+
+  <!-- Página 7 -->
+  <div class="pagina">
+    <h2>PROYECTO Senado 2026 Marca 42 Partido Liberal</h2>
+    <img src="Diapositiva13.png" alt="Gráfica 13">
+  </div>
+
+  <!-- Botón universal -->
+  <button onclick="siguiente()">Continuar</button>
+
+  <!-- Audio de fondo -->
+  <audio id="musica" loop>
+    <source src="musica.mp4" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    let index = 0;
+    const paginas = document.querySelectorAll(".pagina");
+    const audio = document.getElementById("musica");
+
+    function mostrarPagina(n) {
+      paginas.forEach((p, i) => p.classList.remove("activa"));
+      paginas[n].classList.add("activa");
+    }
+
+    function siguiente() {
+      // iniciar audio al primer clic/tap
+      if (audio.paused) {
+        audio.play().catch(err => console.log("El navegador bloqueó el autoplay:", err));
+      }
+      index = (index + 1) % paginas.length;
+      mostrarPagina(index);
+    }
+
+    // Capturar tecla Enter y usar la misma función
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        siguiente();
+      }
+    });
+  </script>
+</body>
+</html>
